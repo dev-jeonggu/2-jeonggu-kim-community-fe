@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" href="/css/board/boardAdd.css">
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+</head>
+<body>
+    <header class="header" id="header"></header>
+    <hr class="full-width-line">
+    <!-- NOTE : main -->
+    <main class="width-570">
+        <h2 class="board-title">게시글 작성</h2>
+        <!-- NOTE : 제목 입력 -->
+        <section class="post-section post-section-title">
+            <label for="txt_title">제목*</label>
+            <hr class="section-content-line">
+            <input type="text" id="txt_title" maxlength="26" placeholder="제목을 입력해주세요. (최대 26글자)">
+            <hr class="section-content-line">
+        </section>
+        <!-- NOTE : 내용 입력 -->
+        <section class="post-section post-section-content">
+            <label for="txt_content">내용*</label>
+            <hr class="section-content-line">
+            <textarea id="txt_content" placeholder="내용을 입력해주세요."></textarea>
+            <hr class="section-content-line">
+            <p id="p_content_helper"></p>
+        </section>
+        <!-- NOTE : 이미지 업로드 -->
+        <section class="post-section post-section-image">
+            <label for="img_upload">이미지</label>
+            <input type="file" id="img_upload" accept="image/*">
+        </section>
+        <!-- NOTE : 수정 버튼 -->
+        <button id="btn_board_add">완료</button>
+    </main>
+    <footer class="footer" id="footer"></footer>
+    <div class="cursor-dot"></div>
+
+    <script src="/js/common/auth.js" type="module"></script>
+    <script src="/js/common/header.js" defer></script>
+    <script src="/js/board/boardAdd.js" type="module"></script>
+    <script src="/js/common/common.js" type="module"></script>
+    <script src="/js/common/footer.js" defer></script>
+</body>
+</html>

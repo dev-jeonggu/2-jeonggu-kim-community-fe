@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register-container {
+    width: 100%;
+    max-width: 355px;
+    margin-top: 161px;
+    border-radius: 8px;
+    text-align: center;
+}
+.register-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+.profile-picture label {
+    margin-top: 15px;
+}
+label {
+    /* font-family: Pretendard; */
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 17.9px;
+    text-align: left;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    width: 355px;
+    height: 33px;
+    gap: 0px;
+    opacity: 0px;
+}
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%; 
+}
+.profile-picture label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+.profile-icon {
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    clip-path: circle(49%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* 이미지가 원형을 꽉 채우도록 설정 */
+    background-position: center; /* 이미지 중심을 기준으로 배치 */
+  
+    
+    font-size: 2rem;
+    color: white;
+    margin-top: 10px;
+}
+.profile-icon:hover {
+    background-color: #e74c3c;
+}
+#img_profile {
+    width: 149px;
+    height: 149px;
+    gap: 0px;
+    opacity: 0px;
+}
+.profile-text {
+    position: absolute;
+    margin-top: 125px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    pointer-events: none;
+}
+#h2_register_title {
+    /* font-family: Pretendard; */
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38.19px;
+    text-align: center;
+}
+.register-helper-text {
+    font-family: Inter;
+    font-size: 12px;
+    line-height: 14.52px;
+    text-align: left;
+    color: #e74c3c;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: none;
+}
+
+#registerForm {
+    width: 355px;
+}
+
+#btn_register:hover {
+    background-color: #e74c3c;
+}
+
+#email-helper, #p_pwd {
+    white-space: pre-line; /* NOTE : 줄바꿈 문자 (\n) 인식 설정*/
+}

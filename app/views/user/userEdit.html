@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 수정</title>
+    <link rel="stylesheet" href="/css/user/userEdit.css">
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+</head>
+<body>
+    <!-- NOTE : header -->
+    <header class="header" id="header"></header>
+    <hr class="full-width-line">
+    <!-- NOTE : main -->
+    <main id="width-355">
+        <!-- NOTE : 회원정보 수정 section -->
+        <div class="section" id="div_profile_section">
+            <h2 class="text-center">회원정보수정</h2>
+            <div id="div_profile_title">
+                <p>프로필 사진</p>
+            </div>
+            <div class="text-center" id="div_profile_img">
+                <input type="file" id="file_profile_url" accept="image/*" style="display:none;">
+                <img src="" class="img_profile" id="img_profile_url">
+                <span class="profile-text">변경</span>
+            </div>
+            <label class="left-sort" for="txt_email">이메일</label>
+            <input type="email" class="input-field" id="txt_email" readonly>
+            <label class="left-sort" for="txt_nickname"> 닉네임</label>
+            <input type="text" class="input-field" id="txt_nickname" placeholder="닉네임을 입력하세요">
+            <p class="p_content_helper" id="p_content_helper"></p>
+            <button type="submit" class="defult-button" id="btn_info_edit">수정하기</button>
+            <p class="default-link text-center"><a id="a_user_delete">회원탈퇴</a></p>
+            <div class="text-center">
+                <button class="input-edit-button" id="btn_info_update" style="display: none;">수정완료</button>
+            </div>
+        </div>
+        <!-- NOTE : 비밀번호 수정 section -->
+        <div class="section" id="div_pwd_update" style="display: none;">
+            <h2 class="text-center">비밀번호 수정</h2>
+                <label class="left-sort label-title" for="txt_pwd">비밀번호</label>
+                <input type="password" class="input-field" id="txt_pwd" placeholder="비밀번호를 입력하세요">
+                <p class="p_content_helper" id="p_pwd"></p>
+                <label class="left-sort label-title" for="txt_confirm_pwd">비밀번호 확인</label>
+                <input type="password" class="input-field" id="txt_confirm_pwd" placeholder="비밀번호를 한번 더 입력하세요">
+                <p class="p_content_helper" id="p_confirm_pwd"></p>
+                <button type="submit" class="defult-button" id="btn_pwd_update">수정하기</button>
+        </div>
+        <!-- NOTE : 팝업 -->
+        <div class="popup" id="div_user_popup" style="display:none">
+            <p>회원탈퇴 하시겠습니까?</p>
+            <span>작성된 게시글과 댓글은 삭제됩니다.</span>
+            <button class="popup-cancel-button" id="btn_user_cancel">취소</button>
+            <button class="popup-confirm-button" id="btn_user_confirm">확인</button>
+        </div>
+    </main>
+    <footer class="footer" id="footer"></footer>
+    <div class="cursor-dot"></div>
+    
+    <script src="/js/user/userEdit.js" type="module"></script>
+    <script src="/js/common/header.js" defer></script>
+    <script src="/js/common/common.js" type="module"></script>
+    <script src="/js/common/auth.js" type="module"></script>
+    <script src="/js/common/footer.js" defer></script>
+</body>
+</html>
