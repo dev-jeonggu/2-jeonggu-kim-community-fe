@@ -36,3 +36,13 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      # 5. Elastic Beanstalk 배포
+      - name: Deploy to Elastic Beanstalk
+        run: |
+          zip -r deploy.zip Dockerrun.aws.json
+          aws elasticbeanstalk create-application-version --application-name ${{ secrets.EB_APP_NAME }} \
+            --version-label ${{ github.sha }} \
+            --source-bundle S3Bucket=elasticbeanstalk-${{ secrets.AWS_REGION }},Key=deploy.zip
+          aws elasticbeanstalk update-environment --application-name ${{ secrets.EB_APP_NAME }} \
+            --environment-name ${{ secrets.EB_ENV_NAME }} \
+            --version-label ${{ github.sha }}
