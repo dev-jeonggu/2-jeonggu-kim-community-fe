@@ -1,18 +1,12 @@
-- name: Create Dockerrun.aws.json
-  run: |
-    echo '{
-      "AWSEBDockerrunVersion": "1",
-      "Image": {
-        "Name": "'"${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO_NAME}:latest"'",
-        "Update": "true"
-      },
-      "Ports": [
-        {
-          "ContainerPort": 3000
-        }
-      ]
-    }' > Dockerrun.aws.json
-  env:
-    AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-    AWS_REGION: ${{ secrets.AWS_REGION }}
-    ECR_REPO_NAME: ${{ secrets.ECR_REPO_NAME }}
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "920373009361.dkr.ecr.us-west-2.amazonaws.com/jeonggu-community-v1:latest",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 3000
+    }
+  ]
+}
