@@ -1,14 +1,13 @@
-- name: Generate Dockerrun.aws.json
-  run: |
-    echo '{
-      "AWSEBDockerrunVersion": "1",
-      "Image": {
-        "Name": "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPO_NAME }}:latest",
-        "Update": "true"
-      },
-      "Ports": [
-        {
-          "ContainerPort": 3000
-        }
-      ]
-    }' > Dockerrun.aws.json
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPO_NAME }}:latest",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 3000,
+      "HostPort": 3000
+    }
+  ]
+}
