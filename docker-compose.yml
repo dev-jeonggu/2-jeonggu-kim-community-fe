@@ -1,0 +1,6 @@
+version: '3'
+services:
+  app:
+    image: 920373009361.dkr.ecr.ap-northeast-2.amazonaws.com/jeonggu-community-v1:latest
+    ports:
+      - "3000:3000"
