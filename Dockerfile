@@ -13,6 +13,17 @@ RUN npm install --production
 # NOTE : 애플리케이션 코드 복사
 COPY . .
 
+# 환경 변수 전달을 위한 ARG 정의
+ARG REACT_APP_API_URL
+ARG SECRET_KEY
+ARG PORT
+
+# 환경 변수로 .env 파일 생성
+RUN mkdir -p config && \
+    echo "REACT_APP_API_URL=$REACT_APP_API_URL" > config/.env && \
+    echo "SECRET_KEY=$SECRET_KEY" >> config/.env && \
+    echo "PORT=$PORT" >> config/.env
+    
 # NOTE : 포트 노출
 ENV PORT=3000
 
