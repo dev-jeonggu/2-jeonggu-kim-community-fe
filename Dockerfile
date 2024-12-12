@@ -14,6 +14,8 @@ RUN npm install --production
 COPY . .
 
 # NOTE : 포트 노출
+ENV PORT=3000
+
 EXPOSE 3000
 
 # NOTE : 애플리케이션 시작 명령
