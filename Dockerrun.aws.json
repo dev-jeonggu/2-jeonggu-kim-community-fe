@@ -3,7 +3,7 @@
     echo '{
       "AWSEBDockerrunVersion": "1",
       "Image": {
-        "Name": "'$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_REGION'.amazonaws.com/'$ECR_REPO_NAME':latest",
+        "Name": "'"${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO_NAME}:latest"'",
         "Update": "true"
       },
       "Ports": [
