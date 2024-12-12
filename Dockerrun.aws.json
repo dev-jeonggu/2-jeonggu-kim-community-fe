@@ -1,5 +1,5 @@
 {
-  "AWSEBDockerrunVersion": "1",
+  "AWSEBDockerrunVersion": 1,
   "Image": {
     "Name": "920373009361.dkr.ecr.ap-northeast-2.amazonaws.com/jeonggu-community-v2:latest",
     "Update": true
