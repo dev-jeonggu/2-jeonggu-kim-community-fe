@@ -25,9 +25,9 @@ RUN mkdir -p config && \
     echo "PORT=$PORT" >> config/.env
     
 # NOTE : 포트 노출
-ENV PORT=8080
+ENV PORT=3000
 
-EXPOSE 8080
+EXPOSE 3000
 
 # NOTE : 애플리케이션 시작 명령
 CMD ["node", "app.js"]
