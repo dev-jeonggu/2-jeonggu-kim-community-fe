@@ -59,7 +59,7 @@
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    cursor: url("../../images/cloud-icon-v.1.png"), auto;
+    cursor: url(../../images/cloud-icon-v.1.png) 25 25, auto;
 }
 body {
     display: flex;
@@ -74,14 +74,6 @@ body {
     background-attachment: fixed; /* 배경 고정 (선택 사항) */
     /* background-color: #4466ff;
     border: none; */
-}
-.cursor-dot {
-    width: 10px; /* 점 크기 */
-    height: 10px;
-    background-color: #4466ff; /* 점 색상 */
-    border-radius: 50%;
-    position: absolute;
-    pointer-events: none; /* 점이 클릭 이벤트에 영향을 주지 않음 */
 }
 
 main {
