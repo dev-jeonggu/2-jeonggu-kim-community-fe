@@ -2,7 +2,6 @@
 function createHeader() {
     const currentUrl = window.location.href.split('/').pop();
     let headerHTML = ``;
-    if (currentUrl !== ("login") && currentUrl !== ("")) {
         headerHTML += `<div><img class="back-icon" src="/images/back_icon.png" alt="뒤로가기"></div>`;
     }
     headerHTML += `<h2>Jeonggu.kim's BOARD</h2>`;
@@ -83,7 +82,7 @@ function setupHeaderEvents() {
     if (btnLogoutMenu) {
         btnLogoutMenu.addEventListener("click", () => {
             localStorage.removeItem("token");
-            window.location.href = "/login";
+            window.location.href = "/";
         });
     }
 
