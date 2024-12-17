@@ -13,11 +13,18 @@ RUN npm install --production
 # 애플리케이션 코드 복사
 COPY . .
 
-# NOTE : 포트 설정
-ENV PORT=3000
+# Build-time ARG 설정
+ARG REACT_APP_API_URL
+ARG SECRET_KEY
+ARG PORT
 
-# 포트 노출
-EXPOSE 3000
+# ARG를 런타임 ENV로 변환
+ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+ENV SECRET_KEY=${SECRET_KEY}
+ENV PORT=${PORT}
+
+# NOTE: 포트 노출
+EXPOSE ${PORT}
 
 # 애플리케이션 실행 명령
 CMD ["node", "app.js"]
