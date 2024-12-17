@@ -75,7 +75,7 @@ const loadBoardList = async (searchKey = "", searchValue = "") => {
             renderBoardList(result.data); // NOTE : 성공 시 게시글 렌더링
         } else {
             alert('게시글 목록을 불러오는 데 실패했습니다.');
-            window.history.back();
+            window.location.replace("/login"); 
         }
     } catch (error) {
         console.error('Error loading board list:', error);
