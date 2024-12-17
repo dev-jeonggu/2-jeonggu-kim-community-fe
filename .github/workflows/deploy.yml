@@ -13,7 +13,7 @@ jobs:
       # 1. 코드 체크아웃
       - name: Checkout code
         uses: actions/checkout@v3
-
+    
       # 2. AWS 자격 증명 설정
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -22,23 +22,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # 3. AWS SSM에서 파라미터 가져오기
-      - name: Fetch Parameters from SSM
-        run: |
-          REACT_APP_API_URL=$(aws ssm get-parameter --name "2-jeonggu-kim-community" --with-decryption --query "Parameter.Value" --output text | grep REACT_APP_API_URL | cut -d ':' -f2)
-          SECRET_KEY=$(aws ssm get-parameter --name "2-jeonggu-kim-community" --with-decryption --query "Parameter.Value" --output text | grep SECRET_KEY | cut -d ':' -f2)
-          PORT=$(aws ssm get-parameter --name "2-jeonggu-kim-community" --with-decryption --query "Parameter.Value" --output text | grep PORT | cut -d ':' -f2)
-          
-          echo "REACT_APP_API_URL=${REACT_APP_API_URL}" >> $GITHUB_ENV
-          echo "SECRET_KEY=${SECRET_KEY}" >> $GITHUB_ENV
-          echo "PORT=${PORT}" >> $GITHUB_ENV
-
-      # 4. ECR 로그인
+      # 3. ECR 로그인
       - name: Log in to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      # 5. Docker 이미지 빌드 및 푸시
+      # 4. Docker 이미지 빌드 및 푸시
       - name: Build and push Docker image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -46,14 +35,14 @@ jobs:
           IMAGE_TAG: latest
         run: |
           docker build \
-            --build-arg REACT_APP_API_URL=${{ env.REACT_APP_API_URL }} \
-            --build-arg SECRET_KEY=${{ env.SECRET_KEY }} \
-            --build-arg PORT=${{ env.PORT }} \
+            --build-arg REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }} \
+            --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} \
+            --build-arg PORT=${{ secrets.PORT }} \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-      # 6. Elastic Beanstalk 배포를 위한 패키지 생성
+      # 5. Elastic Beanstalk 배포를 위한 패키지 생성
       - name: Prepare deployment package
         run: |
           mkdir -p deploy
@@ -62,8 +51,8 @@ jobs:
           sed -i "s|\${ECR_REPOSITORY}|${{ secrets.ECR_REPO_NAME }}|g" deploy/Dockerrun.aws.json
           sed -i "s|\${IMAGE_TAG}|${{ github.sha }}|g" deploy/Dockerrun.aws.json
           cd deploy && zip -r deploy.zip .
-
-      # 7. Elastic Beanstalk 배포
+        
+      # 6. Elastic Beanstalk 배포
       - name: Deploy to Elastic Beanstalk
         run: |
           zip -r deploy.zip Dockerrun.aws.json
