@@ -80,6 +80,7 @@ const loadBoardList = async (searchKey = "", searchValue = "") => {
     } catch (error) {
         console.error('Error loading board list:', error);
         alert('서버 오류가 발생했습니다.');
+        window.location.replace("/login"); 
         //window.history.back();
     }
 };
