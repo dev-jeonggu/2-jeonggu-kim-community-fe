@@ -72,6 +72,7 @@ body {
     background-position: center; /* 이미지 가운데 정렬 */
     background-repeat: no-repeat; /* 반복 제거 */
     background-attachment: fixed; /* 배경 고정 (선택 사항) */
+    transition: background-image 0.3s ease-in-out;
     /* background-color: #4466ff;
     border: none; */
 }
